@@ -1,5 +1,6 @@
 package com.med.voll.chisrra.apivoll.entities;
 
+import com.med.voll.chisrra.apivoll.medico.DatosRegistroMedico;
 import com.med.voll.chisrra.apivoll.medico.Especialidad;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "Medico")
-@Table(name = "medicos")
+@Table(name = "medico")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -24,4 +25,12 @@ public class Medico {
     private Especialidad especialidad;
     @Embedded
     private Direccion direccion;
+
+    public Medico(DatosRegistroMedico registroMedico) {
+        this.nombre = registroMedico.nombre();
+        this.email = registroMedico.email();
+        this.documento = registroMedico.documento();
+        this.especialidad = registroMedico.especialidad();
+        this.direccion = new Direccion(registroMedico.direccion());
+    }
 }

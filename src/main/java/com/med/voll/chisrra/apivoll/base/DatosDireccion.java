@@ -1,4 +1,16 @@
 package com.med.voll.chisrra.apivoll.base;
 
-public record DatosDireccion(String calle, String distrito, String ciudad, int numero, String complemento) {
+import jakarta.validation.constraints.NotBlank;
+
+public record DatosDireccion(
+        @NotBlank
+        String calle,
+        @NotBlank
+        String distrito,
+        @NotBlank
+        String ciudad,
+        @NotBlank
+        String numero,
+        @NotBlank
+        String complemento) {
 }
